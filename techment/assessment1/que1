@@ -1,0 +1,13 @@
+package assessment1;
+
+public class Que1 {
+	public static void main(String args[])
+	{int c,b,a=7,d=7;
+	
+		b=a++ - ++a - a++ + ++a - a--;
+		System.out.println("value of b is " +b);
+		c=--d + d-- + ++d + d-- - ++d;
+		System.out.println("value of d is "+d);
+		
+	}
+}

@@ -1,0 +1,70 @@
+Q01. Display distinct Employee id, Employee name who kept the item issued for more than a year.
+select distinct em.employee_id, employee_name from employee_master em, employee_issue_details eid where em.employee_id=eid.employee_id  and (datediff(return_date,issue_date)/365) >1;
+
+02. Count number of customers who have gone for loan type Stationary. 
+select count(e.employee_id) as number_of_customers from employee_master e,loan_card_master l, employee_card_details d where loan_type="Stationary" and e.employee_id=d.employee_id and d.loan_id=l.loan_id ;
+
+03. Display Category and number of item in that category.
+select item_category,count(item_category) as number_of_item from item_master group by item_category;
+
+Q04. Empid ,Emp Name who joined the company after 2005.
+-->select employee_id , employee_name from employee_master where YEAR(date_of_joining) >2005;
+
+05. Count gender and group by gender.
+-->select gender , count(gender) as count_of_gender  from employee_master group by gender;
+
+06. Count number of employees whose issue status is yes.
+-->select count(distinct employee_name) as number_of_employees from item_master i,employee_master e,employee_issue_details d where d.employee_id=e.employee_id and d.item_id=i.item_id and i.issue_status="yes";
+
+Q08.Find the max of total valuation of employees whose purchase is in two different categories.
+--> Select em.employee_id, employee_name, sum(item_valuation)
+     from employee_master em, item_master im,
+     where em.employee_id=eid.employee_id and      eid.item_id=im.item_id
+     group by em.employee_id
+     having sum(item_valuation)
+     in(select max(c) from(select sum(item_valuation) c
+     from item_master im, employee_issue_details eid,
+     employee_master em
+     where im.item_id=eid.item_id and eid.employee_id=em.employee_id
+     group by em.employee_id)a) and
+     count(distinct item_category)>=2
+     order by em.employee_id;
+
+09.Display count of employees who have recieved loan.
+-->select count(employee_id) as count from employee_card_details ;
+10.Display emp id,emp name and no of furniture purchased 
+by employee who purchased more than one furniture. 
+
+-->select e.employee_name,d.employee_id,count(item_category) as no_of_furnitures from item_master i,employee_issue_details d, employee_master e where i.item_id=d.item_id and e.employee_id=d.employee_id  and i.item_category="furniture"  group by d.employee_id  ;
+
+11. Details of issue id,emp id,name who had issued in product display in 
+sorted order of issue_id.
+
+select issue.issue_id , emp.employee_id, emp.employee_name `from employee_issue_details issue, employee_master emp where issue.employee_id = emp.employee_id order by issue.issue_id asc; 
+ 
+12. Display customer who has not availed for loan.
+-->select employee_name, employee_id from employee_master where employee_id <> all(select employee_id from employee_card_details) ;
+
+Q13. Display emp records for whom never issued an item as a loan order based on emp id 
+-->select * from employee_master where employee_id <> all(select distinct employee_id from employee_issue_details) and employee_id <> all(select employee_id from employee_card_details);
+
+Q14. Display empid,name who has the highest valuation. if multiple records then display in order of emp id 
+-->select e.employee_name,d.employee_id,sum(item_valuation) as total_valuation from item_master i,employee_issue_details d, employee_master e where i.item_id=d.item_id and e.employee_id=d.employee_id group by d.employee_id;
+
+15. Display No. of emp in HR dept
+-->select count(*) as No_of_employee_in_hr_dept from employee_master where department = "hr";
+
+16. Display issue status  and number of items of furniture based on issued and not issued 
+-->select issue_status, count(*) as number_of_yes_or_no from item_master where item_category = "furniture" group by issue_status; 
+
+17. Display empid and total valuation of each employee where employee must have at least one product issued
+select distinct d.employee_id, sum(item_valuation) as total_valuation from employee_issue_details d,item_master i  where i.item_id = d.item_id and i.issue_status="yes" group by i.item_id;
+
+18. Disp empid,name and count of categories of each emp having at least 2 categories
+-->select emp id,name,c
+
+19. Display name of categories and no of items in each category and sort in order of no of items
+-->select item_category,count(item_id)as number_of_items from item_master group by item_category;
+
+20. Display empid,name with their total valuations.
+-->select e.employee_name,d.employee_id,sum(item_valuation) as total_valuation from item_master i,employee_issue_details d, employee_master e where i.item_id=d.item_id and e.employee_id=d.employee_id group by d.employee_id;

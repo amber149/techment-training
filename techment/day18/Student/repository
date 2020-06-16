@@ -1,0 +1,43 @@
+package com.techment;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Repository {
+
+	static ArrayList<Student> studentlist = new ArrayList<Student>();
+	
+	static
+	{
+		studentlist.add(new Student(1,"sachin","hr"));
+		studentlist.add(new Student(2,"ravi","dev"));
+		studentlist.add(new Student(3,"kumar","hr"));
+		
+	}
+	
+	public List<Student> getAll()
+	{
+		return studentlist;
+	}
+	
+	public String add(Student std)
+	{
+		studentlist.add(std);
+		return "student added";
+	}
+	
+	public String delete(int id)
+	{
+		studentlist.remove(id);
+		return "student added";
+	}
+	
+	public String update(Student std)
+	{
+		System.out.print("Before update");
+		studentlist.get(std.getId()).setName(std.getName());
+		studentlist.get(std.getId()).setName(std.getDept());
+		return "student update";
+	}
+	
+}

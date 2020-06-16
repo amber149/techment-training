@@ -1,0 +1,56 @@
+package com.techment;
+
+import java.util.List;
+
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("/studentapi")
+public class StudentRestfulApi {
+	
+	@GET
+	@Path("/abc")
+	public String abc()
+	{
+		return "hello";
+	}
+	
+	@GET
+	@Path("/getall")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Student> getstudent()
+	{
+		Repository r = new Repository();
+		return r.getAll();
+	}
+	
+	@POST
+	@Path("/add")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String addstudent(Student std)
+	{
+		Repository r = new Repository();
+		return r.add(std);
+	}
+	
+	@DELETE
+	@Path("/delete/{id}")
+	public String deletestudent(int id)
+	{
+		Repository r = new Repository();
+		return r.delete(id);
+	}
+	
+	@PUT
+	@Path("/update")
+	public String updatestudent(Student std)
+	{
+		Repository r = new Repository();
+		return r.update(std);
+	}
+}

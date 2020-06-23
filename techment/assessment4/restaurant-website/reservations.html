@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="index.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Restaurant Reservation</title>
+  </head>
+  <body>
+  <nav>
+    <ul class="nav-flex-row">
+      <li class="nav-item">
+        <a href="./index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="./reservations.html">Reservation</a>
+      </li>
+      <li class="nav-item">
+        <a href="./menu.html">Menu</a>
+      </li>
+      <li class="nav-item">
+        <a href="./login.html">Login</a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="section-intro1">
+    <header>
+      <h1>Make Reservation</h1>
+    </header>
+    <div class="link-to-book-wrapper">
+      <a class="link-to-book" href="#reservations">Book a table</a>
+    </div>
+  </section>
+  <section class="reservations" id="reservations">
+  <div class="flex-column-form">
+        <h3>
+          Booking :
+        </h3>
+      <form class="media-centered">
+          <div class="form-group">
+            <p>
+              Please leave your number we will call to make a reservation
+            </p>
+            <input type="name" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control" id="exampleInputphoneNumber1" placeholder="Enter your phone number">
+          </div>
+          <div>
+          <label style="color:black;font-size: large;">Select Location :</label>
+          <div></div>
+          <input type="radio" id="raipur" name="location" value="Raipur">
+          <label style="color: black;font-size: larger;" for="raipur">Raipur</label><br>
+          <input type="radio" id="bilaspur" name="location" value="Bilaspur">
+          <label style="color: black;font-size: larger;" for="bilaspur">Bilaspur</label><br>
+          <input type="radio" id="bhillai" name="location" value="Bhillai">
+          <label style="color: black;font-size: larger;" for="bhillai">Bhillai</label><br>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div>  
+  </section>
+</body>  
+</html> 
+  
